@@ -1,4 +1,5 @@
 export type Persona= {
+    id: string;
     name: string;
     gender: string;
     age: string;
@@ -13,7 +14,9 @@ export type Persona= {
   
   export function parsePersona(aiResponse: string): Persona {
     const lines = aiResponse.split('\n');
-    const persona: Partial<Persona> = {};
+    const persona: Partial<Persona> = {
+      id: new Date().toISOString(),
+    };
   
     lines.forEach(line => {
       const [key, ...valueParts] = line.split(':');

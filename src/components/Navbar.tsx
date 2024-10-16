@@ -15,7 +15,7 @@ export function Navbar() {
             </div>
           </div>
           <div className="flex items-center">
-            <Button className="bg-violet-800 hover:bg-violet-950"> <Link  href="" >   Try for free </Link ></Button>
+            <Button className="bg-violet-800 hover:bg-violet-950"> <Link  href="../#personaform" >   Try for free </Link ></Button>
           </div>
         </div>
       </div>

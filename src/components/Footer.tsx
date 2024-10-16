@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <p className="text-gray-500 text-sm">© 2024 Persona AI. All rights reserved.</p>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 flex-wrap">
             <Button variant="link">Privacy Policy</Button>
             <Button variant="link">Terms of Service</Button>
           </div>

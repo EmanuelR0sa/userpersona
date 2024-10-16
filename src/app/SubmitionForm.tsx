@@ -81,7 +81,7 @@ export function InputForm({ onResponse }: InputFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6 mt-7">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6 mt-7" id="personaform">
         <FormField
           control={form.control}
           name="service"
@@ -108,7 +108,7 @@ export function InputForm({ onResponse }: InputFormProps) {
             </FormItem>
           )}
         />
-        <Button className="bg-violet-800 hover:bg-violet-950" type="submit">{isLoading ? 'Submitting...' : 'Submit'}</Button>
+        <Button className="bg-violet-800 hover:bg-violet-950" type="submit">{isLoading ? 'Creating...' : 'Create persona'}</Button>
       </form>
     </Form>
   )
