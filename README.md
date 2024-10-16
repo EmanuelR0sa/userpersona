@@ -1,3 +1,10 @@
+# Persona AI
+
+![image (1)](https://github.com/user-attachments/assets/6647162f-fe5f-4570-9e94-1a0bf8942e84)
+
+**Persona AI** is a web-based application designed to provide users with a simple and intuitive way to generate personas. 
+The project is built with Next.js, TypeScript, Tailwind css, mongo Db and AI (meta-llama).
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
