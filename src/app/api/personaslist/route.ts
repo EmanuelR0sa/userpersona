@@ -12,11 +12,12 @@ export async function POST(req: Request) {
       
       return NextResponse.json(newPersona, { status: 201 });
     } catch (error) {
+        console.error('Error:', error)
       return NextResponse.json({ error: 'Failed to create persona' }, { status: 500 });
     }
   }
   
-  export async function GET(req: Request) {
+  export async function GET() {
     try {
       const client = await clientPromise;
       const db = client.db();
@@ -25,6 +26,7 @@ export async function POST(req: Request) {
       
       return NextResponse.json({ data: allPersonas }, { status: 200 });
     } catch (error) {
+        console.error('Error:', error)
       return NextResponse.json({ error: 'Failed to fetch personas' }, { status: 500 });
     }
   }

@@ -3,12 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { toast, useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -32,8 +30,7 @@ type InputFormProps= {
 
 export function InputForm({ onResponse }: InputFormProps) {
     const [isLoading, setIsLoading]= useState(false);
-     const { toast } = useToast();
-
+   
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -60,19 +57,12 @@ export function InputForm({ onResponse }: InputFormProps) {
 
         const result = await response.json();
 
-        toast({
-            description: "Persona generated successfully.",
-          })
-
           onResponse(result.message)
 
           form.reset()
     } catch (error) {
-        toast({
-            title: "Error",
-            description: "Fail to submit the form. Please try again.",
-            variant: "destructive"
-          })
+        console.error('Fail to submit the form. Please try again.')
+        
     }finally {
         setIsLoading(false)
       }

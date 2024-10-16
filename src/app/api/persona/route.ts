@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
-const YOUR_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-const YOUR_SITE_NAME = 'Persona AI'
 
 export async function POST(req: Request) {
   try {
