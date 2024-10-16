@@ -2,28 +2,57 @@
 import Image from "next/image";
 import {InputForm} from '@/app/SubmitionForm'
 import { useState } from "react";
+import { parsePersona } from '@/lib/parsePersona'
+import PersonasCard from "@/components/ui/personasCard";
+import {Persona} from '@/lib/parsePersona'
 
 export default function Home() {
-  const [responseMessage, setResponseMessage]= useState<string | null>(null);
+  const [persona, setPersona] = useState<Persona | null>(null);;
 
   const handleResponse=(message: string)=>{
-    setResponseMessage(message);
+    const parsedPersona = parsePersona(message);
+    setPersona(parsedPersona);
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
      <main className="flex flex-col items-center">
+     <div className="flex-shrink-0 flex items-center mb-8">
+        <Image src={'/personasAvatar.png'} width={200} height={80} alt='avatares'/>
+      </div>
       <h1 className="text-4xl font-bold text-center mb-4 max-w-3xl">Dive into the minds of your target audience with personas that feel like real people.</h1>
-      <p className="font-light text-gray-500 sm:text-xl max-w-3xl">
+      <p className="font-light text-gray-500 sm:text-xl max-w-3xl mb-8">
      User personas serve as powerful tools for creating products and services that meet the needs and expectations of your target audience effectively.
       </p>
       <InputForm onResponse={handleResponse }/>
-      {responseMessage && (
-          <div className="mt-8 p-6 bg-gray-100 rounded-lg shadow-md w-full">
-            <h2 className="text-2xl font-bold mb-4">Generated Persona:</h2>
-            <p className="whitespace-pre-wrap">{responseMessage}</p>
-          </div>
+      <div className="my-8">
+      {persona && (
+          <PersonasCard
+            imgSrc="/male01.png"
+            name={persona.name}
+            gender={persona.gender}
+            age={persona.age}
+            ocupation={persona.occupation}
+            location={persona.location}
+            bio={persona.bio}
+            goals={persona.goals}
+            painpoints={persona.painpoints}
+            motivation={persona.motivation}
+            preferences={persona.preferences}
+          />
         )}
+        </div>
+        <section>
+          <h1 className="sm:text-xl font-bold mb-1 max-w-3xl text-violet-800">What is a Persona?</h1>
+          <p className="sm:text-xl max-w-3xl">A persona is a fictional representation of a specific type of person, 
+            often used in various fields such as marketing, user experience (UX) design, writing, 
+            and psychology. The concept is designed to help creators or decision-makers understand and empathize with the target audience or user.</p>
+        </section>
+        <section className=" my-4">
+          <h1 className="sm:text-xl font-bold mb-1 max-w-3xl text-violet-800">AI Tool?</h1>
+          <p className="sm:text-xl max-w-3xl">Harness the cutting-edge power of Artificial Intelligence to streamline your creative process.
+          Save time and energy while generating high-quality assets that drive results.</p>
+        </section>
      </main>
     </div>
   );

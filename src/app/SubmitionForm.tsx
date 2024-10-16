@@ -32,8 +32,9 @@ type InputFormProps= {
 
 export function InputForm({ onResponse }: InputFormProps) {
     const [isLoading, setIsLoading]= useState(false);
+     const { toast } = useToast();
 
-    const { toast } = useToast()
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -64,7 +65,7 @@ export function InputForm({ onResponse }: InputFormProps) {
           })
 
           onResponse(result.message)
-          
+
           form.reset()
     } catch (error) {
         toast({
@@ -107,7 +108,7 @@ export function InputForm({ onResponse }: InputFormProps) {
             </FormItem>
           )}
         />
-        <Button type="submit">{isLoading ? 'Submitting...' : 'Submit'}</Button>
+        <Button className="bg-violet-800 hover:bg-violet-950" type="submit">{isLoading ? 'Submitting...' : 'Submit'}</Button>
       </form>
     </Form>
   )
